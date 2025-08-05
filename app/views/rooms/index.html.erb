@@ -1,0 +1,10 @@
+<h1>Rooms</h1>
+<ul>
+<% @rooms.each do |room| %>
+  <li><%= link_to room.name, room %></li>
+<% end %>
+<%= form_with model: Room do |form| %>
+  <%= form.text_field :name %>
+  <%= form.submit 'Create' %>
+<% end %>
+</ul>
