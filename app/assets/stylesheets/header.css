@@ -1,0 +1,20 @@
+.message {
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 300px;
+    padding: 3px;
+    text-align: center;
+}
+
+.alerts, .notices {
+    list-style: none;
+    padding: 0;
+}
+
+.alerts .message {
+    background-color: rgb(240, 192, 192);
+}
+
+.notices .message {
+    background-color: rgb(195, 192, 236);
+}

@@ -11,9 +11,11 @@ class RoomsController < ApplicationController
     @room = Room.build(room_params)
 
     if @room.save
+      flash[:notice] = 'Room has been successfully created'
       redirect_to @room
     else
-      # TODO
+      flash[:alert] = @room.errors.full_messages
+      redirect_to rooms_path
     end
   end
 

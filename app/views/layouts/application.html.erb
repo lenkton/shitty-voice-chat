@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <ul class="alerts">
+      <% Array(alert).each do |message| %>
+      <li class="message"><%= message %></li>
+      <% end %>
+    </ul>
+    <ul class="notices">
+      <% Array(notice).each do |message| %>
+      <li class="message"><%= message %></li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>
