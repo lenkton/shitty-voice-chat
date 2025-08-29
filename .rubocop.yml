@@ -1,1 +1,4 @@
 plugins: rubocop-rails
+
+Style/Documentation:
+  Enabled: false
