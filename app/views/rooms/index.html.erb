@@ -1,10 +1,16 @@
 <h1>Rooms</h1>
+
+<%= turbo_stream_from :rooms %>
+
 <ul>
-<% @rooms.each do |room| %>
-  <li><%= link_to room.name, room %></li>
+<%= turbo_frame_tag :rooms do %>
+    <% @rooms.each do |room| %>
+      <%= render room %>
+    <% end %>
 <% end %>
+</ul>
+
 <%= form_with model: Room do |form| %>
   <%= form.text_field :name %>
   <%= form.submit 'Create' %>
 <% end %>
-</ul>
