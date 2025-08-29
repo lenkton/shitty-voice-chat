@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'rooms#index'
 
-  resources :rooms, only: %i[index show create]
+  resources :rooms, only: %i[index show create] do
+    post :join, on: :member
+    post :leave, on: :member
+  end
 end
