@@ -64,7 +64,6 @@ group :development do
 
   # Rubocop
   gem 'rubocop-rails', require: false
-
 end
 
 group :test do
