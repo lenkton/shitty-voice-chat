@@ -21,6 +21,8 @@ class RoomsController < ApplicationController
   end
 
   def join
+    current_user.rooms = [] if current_user.rooms.any?
+
     @room.users << current_user
 
     render json: @room, status: :ok
