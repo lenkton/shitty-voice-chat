@@ -8,4 +8,7 @@ class User < ApplicationRecord
          #  :recoverable,
          :rememberable,
          :validatable
+
+  has_many :participations, dependent: :destroy
+  has_many :rooms, through: :participations
 end

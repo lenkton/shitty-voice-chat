@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
   end
 
   def leave
-    @room.users.delete(current_user)
+    @room.users.destroy(current_user)
 
     render json: @room, status: :ok
   end

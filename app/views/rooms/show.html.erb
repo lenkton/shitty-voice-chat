@@ -2,20 +2,20 @@
 
 <%# turbo_stream_from "room_#{@room.id}" %>
 <%= turbo_stream_from @room %>
+<%= turbo_stream_from [@room, :users] %>
+<%= turbo_stream_from [current_user, @room] %>
 
 <%# turbo_frame_tag "room_#{@room.id}" do %>
 <%= turbo_frame_tag @room do %>
     <h1><%= @room.name %></h1>
 
-    <ul id="users">
-        <% @room.users.each do |user| %>
-        <li><%= user.email %></li>
+    <ul>
+        <%= turbo_frame_tag :room_users do %>
+            <% @room.users.each do |user| %>
+                <%= render partial: 'room_user', locals: { user: user } %>
+            <% end %>
         <% end %>
     </ul>
 
-    <% if @room.users.include?(current_user) %>
-    <%= button_to 'Leave', leave_room_path(@room) %>
-    <% else %>
-    <%= button_to 'Join', join_room_path(@room) %>
-    <% end %>
+    <%= render partial: 'join_leave_button', locals: { room: @room, user: current_user } %>
 <% end %>

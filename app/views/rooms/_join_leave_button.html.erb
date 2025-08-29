@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :join_leave_button do %>
+    <% if room.users.include?(user) %>
+    <%= button_to 'Leave', leave_room_path(room) %>
+    <% else %>
+    <%= button_to 'Join', join_room_path(room) %>
+    <% end %>
+<% end %>
