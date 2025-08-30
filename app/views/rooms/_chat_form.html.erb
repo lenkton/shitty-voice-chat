@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :chat_form do %>
+    <%= form_with model: Message do |f| %>
+        <%= f.hidden_field :room_id, value: room.id %>
+        <%= f.text_field :text %>
+        <%= f.submit 'Send' %>
+    <% end %>
+<% end %>

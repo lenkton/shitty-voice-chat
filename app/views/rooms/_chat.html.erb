@@ -3,8 +3,4 @@
     <%= render partial: 'chat_message', locals: { message: message } %>
     <% end %>
 <% end %>
-<%= form_with model: Message do |f| %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.text_field :text %>
-    <%= f.submit 'Send' %>
-<% end %>
+<%= render partial: 'chat_form', locals: { room: @room } %>
