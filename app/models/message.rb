@@ -6,6 +6,8 @@ class Message < ApplicationRecord
 
   after_create_commit :append_to_room_chat
 
+  validates :text, presence: true
+
   private
 
   def append_to_room_chat

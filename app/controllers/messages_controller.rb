@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
           render turbo_stream: turbo_stream.replace(
             'alerts',
             partial: 'alerts',
-            locals: { messages: @room.errors.full_messages }
+            locals: { messages: message.errors.full_messages }
           )
         end
       end
