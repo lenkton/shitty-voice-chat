@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :alerts do %>
+<ul class="alerts">
+    <% Array(messages).each do |message| %>
+    <li class="message"><%= message %></li>
+    <% end %>
+</ul>
+<% end %>

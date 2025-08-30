@@ -11,12 +11,19 @@ class RoomsController < ApplicationController
   def create
     @room = Room.build(room_params)
 
-    if @room.save
-      flash[:notice] = 'Room has been successfully created'
-      redirect_to @room
-    else
-      flash[:alert] = @room.errors.full_messages
-      redirect_to rooms_path
+    respond_to do |format|
+      if @room.save
+        format.html { redirect_to @room, notice: 'Room has been successfully created' }
+      else
+        format.html { redirect_to rooms_path, alert: @room.errors.full_messages }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(
+            'alerts',
+            partial: 'alerts',
+            locals: { messages: @room.errors.full_messages }
+          )
+        end
+      end
     end
   end
 
