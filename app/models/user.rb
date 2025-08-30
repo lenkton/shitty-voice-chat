@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   has_many :participations, dependent: :destroy
   has_many :rooms, through: :participations
+  has_many :messages, dependent: :restrict_with_exception
 end

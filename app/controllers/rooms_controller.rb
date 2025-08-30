@@ -50,6 +50,7 @@ class RoomsController < ApplicationController
   end
 
   def find_room
+    # TODO: preload messages and their authors
     @room = Room.preload(:users).find(params[:id])
   end
 end

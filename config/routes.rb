@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     post :join, on: :member
     post :leave, on: :member
   end
+  resources :messages, only: [:create]
 end
