@@ -21,14 +21,13 @@ class RoomsController < ApplicationController
   end
 
   def join
-    current_user.rooms = [] if current_user.rooms.any?
+    result = RoomJoiner.call(user: current_user, room: @room)
 
-    @room.users << current_user
-
-    render json: @room, status: :ok
-  rescue ActiveRecord::RecordInvalid => e
-    errors = e.record.errors.full_messages
-    render json: { errors: errors }, status: :unprocessable_content
+    if result.success?
+      render json: result.data[:room], status: :ok
+    else
+      render json: { errors: result.errors }, status: :unprocessable_content
+    end
   end
 
   def leave
