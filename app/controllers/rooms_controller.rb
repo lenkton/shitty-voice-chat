@@ -31,9 +31,9 @@ class RoomsController < ApplicationController
   end
 
   def leave
-    @room.users.destroy(current_user)
+    result = RoomLeaver.call(user: current_user, room: @room)
 
-    render json: @room, status: :ok
+    render json: result.data[:room], status: :ok
   end
 
   private
